@@ -1,16 +1,10 @@
 import joblib
 import streamlit as st
-from sklearn.feature_extraction.text import TfidfVectorizer
-# from sklearn.svm import SVC
-from sklearn.naive_bayes import MultinomialNB
-from sklearn.metrics import classification_report, confusion_matrix
 from transformers import pipeline
 
 # Load the sentiment analysis model
 model_name = "poom-sci/WangchanBERTa-finetuned-sentiment"
 
-# Load the saved pipeline model
-tf_model = joblib.load('sentiment_pipeline_TF_IDF.pkl')
 sentiment_huggin = pipeline('sentiment-analysis', model=model_name)
 
 
@@ -40,24 +34,4 @@ if st.button("Analyze Sentiment"):
         st.progress(score)
     else:
         st.warning(f"Neutral Sentiment (Score: {score:.2f})")
-        st.progress(score)
-
-    # Analyze sentiment using the model
-    results = tf_model.predict([text_input])[0]
-
-    # Extract sentiment and score
-    sentiment = results[0]['label']
-    score = results[0]['score']
-    
-    # Display result as progress bars
-    st.subheader("Sentiment Analysis Result with TF-IDF:")
-
-    if sentiment == 'positive':
-        st.success(f"Positive Sentiment")
-        st.progress(score)
-    elif sentiment == 'negative':
-        st.error(f"Negative Sentiment")
-        st.progress(score)
-    else:
-        st.warning(f"Neutral Sentiment")
         st.progress(score)
