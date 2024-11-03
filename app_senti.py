@@ -11,8 +11,6 @@ model_name = "poom-sci/WangchanBERTa-finetuned-sentiment"
 
 # Load the saved pipeline model
 tf_model = joblib.load('sentiment_pipeline_TF_IDF.pkl')
-sentiment_tf = pipeline('sentiment-analysis', model=tf_model)
-
 sentiment_huggin = pipeline('sentiment-analysis', model=model_name)
 
 
