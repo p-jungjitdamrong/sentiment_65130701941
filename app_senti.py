@@ -21,7 +21,7 @@ text_input = st.text_area("Enter Thai text for sentiment analysis", "ขอค�
 # Button to trigger analysis
 if st.button("Analyze Sentiment"):
     # Analyze sentiment using the model
-    results = sentiment_analyzer_loaded([text_input])
+    results = sentiment_huggin([text_input])
 
     # Extract sentiment and score
     sentiment = results[0]['label']
