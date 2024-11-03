@@ -6,8 +6,8 @@ from transformers import pipeline
 model_name = "poom-sci/WangchanBERTa-finetuned-sentiment"
 
 # Load the saved pipeline model
-tf_model = joblib.load('sentiment_pipeline_TF_IDF.pkl')
-sentiment_tf = pipeline('sentiment-analysis', model=tf_model)
+#tf_model = joblib.load('sentiment_pipeline_TF_IDF.pkl')
+#sentiment_tf = pipeline('sentiment-analysis', model=tf_model)
 
 sentiment_huggin = pipeline('sentiment-analysis', model=model_name)
 
@@ -41,21 +41,21 @@ if st.button("Analyze Sentiment"):
         st.progress(score)
 
     # Analyze sentiment using the model
-    results = sentiment_pipeline_loaded([text_input])
+#    results = sentiment_pipeline_loaded([text_input])
 
     # Extract sentiment and score
-    sentiment = results[0]['label']
-    score = results[0]['score']
+ #   sentiment = results[0]['label']
+  #  score = results[0]['score']
     
     # Display result as progress bars
-    st.subheader("Sentiment Analysis Result with TF-IDF:")
+  #  st.subheader("Sentiment Analysis Result with TF-IDF:")
 
-    if sentiment == 'positive':
-        st.success(f"Positive Sentiment")
-        st.progress(score)
-    elif sentiment == 'negative':
-        st.error(f"Negative Sentiment")
-        st.progress(score)
-    else:
-        st.warning(f"Neutral Sentiment")
-        st.progress(score)
+#    if sentiment == 'positive':
+ #       st.success(f"Positive Sentiment")
+  #      st.progress(score)
+   # elif sentiment == 'negative':
+    #    st.error(f"Negative Sentiment")
+     #   st.progress(score)
+    #else:
+     #   st.warning(f"Neutral Sentiment")
+      #  st.progress(score)
